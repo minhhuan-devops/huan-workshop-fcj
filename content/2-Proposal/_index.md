@@ -6,107 +6,102 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+# FPT Event Management System  
+## AWS Microservices-based Event Management and Ticketing Solution
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+### 1. Executive Summary  
+The **FPT Event Management** system is designed to provide a comprehensive, highly scalable platform for managing events, issuing tickets, allocating staff, and maintaining venues. Employing an AWS Microservices architecture (via Amazon ECS), the system ensures high availability during massive flash sales, optimizes asynchronous notification delivery, and strictly enforces security from the network layer up to the data layer.
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+### 2. Problem Statement  
+*Current Issues*  
+For large-scale events, flash ticket sales typically generate massive traffic spikes. Traditional monolithic systems are prone to overload, database bottlenecks, and face difficulties when scaling specific features. Additionally, sending notifications (e-tickets, event reminders) synchronously drastically slows down the system's responsiveness.
 
-### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+*Solution*  
+We implement a Microservices architecture to isolate business domains contextually: **Auth, Event, Ticket, Staff**, and **Venue**. All Backend services are containerized (Docker) and orchestrated by **Amazon ECS**. The Frontend is hosted on **Amazon S3** and distributed globally via **CloudFront CDN** along with **AWS WAF** to block malicious web attacks. API requests are centrally routed through **API Gateway** and load-balanced by an **ALB (Application Load Balancer)** to the ECS cluster. Notification delivery is offloaded to a dedicated **Notification Service** which handles tasks asynchronously using **Amazon SQS** as a message queue and **Amazon SES** for dispatching emails. Crucial relational data is durably stored in **Amazon RDS (MySQL 8.0 Multi-AZ)**, while **ElastiCache (Redis)** serves as a robust caching layer for blazing-fast data retrieval.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+*Benefits and ROI*  
+- **Scalability:** The 'Ticket' service can be scaled horizontally independently during flash sales, preserving the stability of other services.
+- **High Availability:** Leveraging RDS Multi-AZ and a containerized architectural model ensures near-zero downtime.
+- **Improved User Experience:** Fast load times supported by CloudFront, ensuring smooth, uninterrupted access.
+- While it demands an upfront investment in infrastructure setup, the Microservices approach yields long-term efficiencies and drastically mitigates the financial risks associated with system outages.
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+*Event Lifecycle*  
+The system covers the full lifecycle of an event:
+- **Organizer:** Submits an event request and books the venue area.
+- **Admin:** Approves the request and opens ticket sales.
+- **Student:** Purchases tickets using an e-Wallet or VNPay.
+- **System:** Automatically issues a PDF ticket with a QR code and dispatches a notification email.
+- **Staff:** Scans the QR code at the check-in counter, which automatically updates attendance reports.
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+*Design Targets*  
+- **High data integrity:** Strictly enforced for payment scenarios and the ticket issuance flow.
+- **Good concurrency behavior:** Evaluated to ensure the system withstands high traffic comfortably during simultaneous ticket purchases.
+- **Low storage waste & clear operational ownership:** Minimizing unused storage allocations and distinctly demarcating service administration among teams.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+### 3. Solution Architecture  
+The system harnesses AWS Managed Services alongside defense-in-depth networking layers and asynchronous event-handling to eliminate high-latency bottlenecks.
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+![FPT Event Management Architecture](/images/2-Proposal/fpt-event-management.jpg)
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+*Utilized AWS Services*  
+- **Amazon Route 53 & CloudFront**: DNS routing alongside CDN distribution guarantees that static Frontend assets (hosted on **S3**) are globally cached and delivered with minimal latency.
+- **AWS WAF**: Web Application Firewall safeguarding against prevalent exploits (e.g., SQL Injection, XSS) and applying rigid Rate Limiting.
+- **Amazon API Gateway & ALB**: Absorbs all inbound API calls, securely routing them through the Load Balancer to the backend ECS cluster.
+- **Amazon ECS (Elastic Container Service)**: Hosts and coordinates the lifecycles of the Microservices (Auth, Ticket, Event, Staff, Venue, Notification).
+- **Amazon RDS (MySQL 8.0 Multi-AZ) & ElastiCache (Redis)**: Form the data and caching layer; RDS ensures durable transactional storage while Redis slashes querying times.
+- **Amazon SQS & Amazon SES**: Powers the Event-Driven architecture; SQS buffers workload queues, and SES facilitates automated email outreach.
+- **Amazon S3 (Storage)**: A highly durable object storage holding event media assets and PDF invoices.
+- **Amazon CloudWatch**: Gathers aggregated metrics, central logs, and performance oversight for the entirety of the architecture.
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+### 4. Technical Implementation  
+*Deployment Phases*  
+1. **Design & Provisioning (IaC):** Blueprints of the Database structure and VPC topology are codified. Infrastructure as Code via Terraform or AWS CDK provisions the VPC, ECS Clusters, ALB, and RDS automatically.
+2. **Microservices Development:** Dividing the monolithic codebase into domain-specific repositories for Frontend and respective Backend Services, including respective Dockerfiles.
+3. **CI/CD Pipeline Setup:** GitHub Actions will trigger on code pushes to construct Docker Images, push them to ECR, and deploy newer task definitions directly to ECS.
+4. **Integration & Load Testing:** Linking the frontend to the API Gateway. Load testing tools will simulate intense ticket sales, verifying WAF thresholds and validating Auto-Scaling mechanisms across ECS and ElastiCache.
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+*Technical Requirements*  
+- **Frontend**: Built with the **ReactJS** library using a Static Export strategy, enabling robust hosting explicitly on S3.
+- **Backend Services**: Developed using the **Golang** programming language. Container artifacts must adhere to Stateless principles for optimal orchestration maneuverability.
+- **Security Posture**: Intra-VPC communications are barred from exposure to the public internet network. RDS and ElastiCache strictly reside within Private Subnets.
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
-
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+### 5. Roadmap & Milestones  
+- **Month 1**: Conduct comprehensive surveys, finalize detailed Data Models, code IaC scripts mimicking VPC, Database tiers, and fundamental networking.
+- **Month 2**: Compile and deploy the static Frontend stack onto S3 + CloudFront. Proceed with building out core ECS backend services (Auth, Event, Ticket).
+- **Month 3**: Develop peripheral services (Venue, Staff), properly integrate SQS + SES notifications, integrate end-to-end functionality via API Gateway, undergo massive Load Testing sprints, and launch to Production.
 
 ### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+Cost summaries can be independently verified on the [AWS Pricing Calculator](https://calculator.aws/#/)
+Alternatively, securely download our [budget estimation file](../attachments/budget_estimation.pdf).
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+*Infrastructure Costing*
+- Compute (Amazon ECS with Fargate): $35.00/month (Estimated for minimum 6 microservices).
+- Database (Amazon RDS MySQL Multi-AZ): $34.00/month (db.t3.micro).
+- Caching (Amazon ElastiCache Redis): $12.00/month (cache.t3.micro).
+- Networking (ALB, API Gateway, CloudFront, Route53): $20.00/month.
+- Web Security (AWS WAF): $6.00/month (1 foundational Web ACL).
+- Storage & Messaging (S3, SQS, SES, CloudWatch): $2.00/month.
 
-Total: $0.7/month, $8.40/12 months
-
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+**Total:** $109.00/month, $1,308.00 annually
 
 ### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+*Risk Matrix*
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+- Microservices data inconsistency: High Impact, Medium Probability.
+- Localized payment flow overload: High Impact, Low Probability.
+- Runaway AWS operational costs: Medium Impact, Low Probability.
 
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+*Mitigation Strategy*
+
+- Data Inconsistency: Establish Saga Patterns or Event-driven propagation architectures supported by SQS.
+- Checkout Bottleneck: Apply asynchronous queue ingest logic and highly responsive Auto-scaling metrics.
+- Budgeting: Configure strict AWS Budget thresholds with associated billing alarms and enforce absolute max-capacity limitations.
+
+*Contingency Plan*
+
+- Immediately regress to manual administrative ticket validation flows and check-in procedures if sweeping infrastructural downtime strikes.
+- Reinstate stable prior cloud footprints via Terraform (IaC) configuration templates to recover environments rapidly.
 
 ### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+Technical Innovations: Completely automate the ticket issuance footprint and financial gateways, effortlessly withstanding dense ticket purchasing frenzies.
+Long-Term Value Extrapolation: Solidify a rigorous core framework that remains easy to maintain, establishing a foundation to eventually repackage this ecosystem as a modular SaaS platform for future FPT engagements.
