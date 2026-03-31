@@ -6,36 +6,28 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
->Tại đây bạn có thể tự do đóng góp ý kiến cá nhân về những trải nghiệm khi tham gia chương trình First Cloud Journey, giúp team FCJ cải thiện những vấn đề còn thiếu sót dựa trên các hạng mục sau:
-
 ### Đánh giá chung
 
 **1. Môi trường làm việc**  
-Môi trường làm việc rất thân thiện và cởi mở. Các thành viên trong FCJ luôn sẵn sàng hỗ trợ khi mình gặp khó khăn, kể cả ngoài giờ làm việc. Không gian làm việc gọn gàng, thoải mái, giúp mình tập trung tốt hơn. Tuy nhiên, mình nghĩ có thể bổ sung thêm một số buổi giao lưu hoặc team bonding để mọi người hiểu nhau hơn.
+Điều ấn tượng nhất với mình về chương trình First Cloud Journey là một môi trường cực kỳ cởi mở và năng động. Khi mới bắt đầu nhúng tay vào AWS, mình bị ngợp bởi lượng kiến thức quá lớn. Nhưng nhờ vào một cộng đồng luôn sẵn sàng chia sẻ, mọi khó khăn đều được tháo gỡ. Tuy nhiên, mình nghĩ chương trình có thể tổ chức thêm một vài buổi talkshow mở hoặc các hoạt động "hỏi xoáy đáp xoay" định kỳ để các bạn thực tập sinh có thể giao lưu nhiều hơn.
 
 **2. Sự hỗ trợ của mentor / team admin**  
-Mentor hướng dẫn rất chi tiết, giải thích rõ ràng khi mình chưa hiểu và luôn khuyến khích mình đặt câu hỏi. Team admin hỗ trợ các thủ tục, tài liệu và tạo điều kiện để mình làm việc thuận lợi. Mình đánh giá cao việc mentor cho phép mình thử và tự xử lý vấn đề thay vì chỉ đưa đáp án.
+Mình thật sự rất trân trọng công sức của các anh chị mentor. Cách các anh chị hướng dẫn không phải là đưa ra dòng code để chạy, mà là chỉ cho mình cách phân tích lỗi, đọc log từ CloudWatch, hiểu sâu kiến trúc. Team admin cũng rất tuyệt vời, luôn nhắc nhở lịch trình kịp thời và gửi các tài liệu reference cực kỳ hữu ích để làm lab.
 
 **3. Sự phù hợp giữa công việc và chuyên ngành học**  
-Công việc mình được giao phù hợp với kiến thức mình đã học ở trường, đồng thời mở rộng thêm những mảng mới mà mình chưa từng được tiếp cận. Nhờ vậy, mình vừa củng cố kiến thức nền tảng, vừa học thêm kỹ năng thực tế.
+Ngành học An toàn thông tin của mình (tại ĐH FPT) yêu cầu sự hiểu biết rộng về hệ thống và mạng. Toàn bộ 13 tuần vừa qua, từ VPC, IAM, cho đến WAF và các cấu hình bảo mật trên ECS, đều "gãi cực đúng chỗ ngứa" trong chuyên ngành của mình. Những kiến thức này sẽ là bệ phóng hoàn hảo cho đồ án tốt nghiệp lẫn công việc của mình sau này trong lĩnh vực Cloud Security/DevSecOps.
 
 **4. Cơ hội học hỏi & phát triển kỹ năng**  
-Trong quá trình thực tập, mình học được nhiều kỹ năng mới như sử dụng công cụ quản lý dự án, kỹ năng làm việc nhóm, và cả cách giao tiếp chuyên nghiệp trong môi trường công ty. Mentor cũng chia sẻ nhiều kinh nghiệm thực tế giúp mình định hướng tốt hơn cho sự nghiệp.
+Chương trình ép mình phải tự kỷ luật bản thân. 13 tuần là một chặng đường dài mà nếu không lên kế hoạch rõ ràng sẽ rất dễ bị dồn deadline. Thêm vào đó, việc được tiếp cận sớm với Amazon Bedrock và Generative AI là một điểm cộng siêu khổng lồ giúp mình đi trước các xu hướng công nghệ mới nhất hiện nay.
 
 **5. Văn hóa & tinh thần đồng đội**  
-Văn hóa công ty rất tích cực: mọi người tôn trọng lẫn nhau, làm việc nghiêm túc nhưng vẫn vui vẻ. Khi có dự án gấp, mọi người cùng nhau cố gắng, hỗ trợ không phân biệt vị trí. Điều này giúp mình cảm thấy mình là một phần của tập thể, dù chỉ là thực tập sinh.
-
-**6. Chính sách / phúc lợi cho thực tập sinh**  
-Công ty có hỗ trợ phụ cấp thực tập và tạo điều kiện về thời gian linh hoạt khi cần thiết. Ngoài ra, việc được tham gia các buổi đào tạo nội bộ là một điểm cộng lớn.
+Tinh thần chia sẻ (Pay It Forward) chính là thứ mình cảm nhận rõ nhất. Dù ai cũng bận các dự án cá nhân, nhưng hễ có bạn nào post lỗi lên group chat là mọi người đều xắn tay vào hỗ trợ. Văn hóa này thực sự gắn kết mọi người rất nhiều dù phần lớn giao tiếp đều là online.
 
 
-### Một số câu hỏi khác
-- Điều bạn **hài lòng nhất** trong thời gian thực tập?  
-- Điều bạn nghĩ công ty **cần cải thiện** cho các thực tập sinh sau?  
-- Nếu giới thiệu cho bạn bè, bạn có **khuyên họ thực tập ở đây không**? Vì sao?  
+### Một số chia sẻ thêm
 
+- **Điều khiến mình hài lòng nhất:** Cơ hội được tự do thử nghiệm trên môi trường thật, học qua những sai lầm (trial and error) và đặc biệt là sự chuyển mình rõ rệt từ "người không biết gì về cloud" thành một người có thể tự tin architect một hệ thống serverless hoàn chỉnh.
+- **Lời khuyên cho thế hệ sau:** Hãy luôn giữ một cái đầu mở, chịu khó đọc document (nhất là AWS docs), đừng nản vì những lỗi "vớ vẩn" lúc cấu hình IAM hay mớ dây nhợ VPC. Thành quả cuối cùng sẽ rất xứng đáng.
 
-### Đề xuất & mong muốn
-- Bạn có đề xuất gì để cải thiện trải nghiệm trong kỳ thực tập?  
-- Bạn có muốn tiếp tục chương trình này trong tương lai?
-- Góp ý khác (tự do chia sẻ):
+### Lời kết
+Chương trình FCJ không chỉ trao cho mình kiến thức, mà còn trao cho mình sự tự tin. Xin gửi lời cảm ơn chân thành nhất đến AWS Vietnam, đội ngũ tổ chức FCJ và tất cả các anh chị mentor đã kiên nhẫn đồng hành cùng mình trong suốt ba tháng qua. Mình chắc chắn sẽ rất nhiệt tình chia sẻ và truyền đạt lại những giá trị này cho khóa thực tập sinh kế tiếp nếu có cơ hội!
