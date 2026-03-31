@@ -6,9 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
 **Trang này** ghi lại nhật ký học tập hàng tuần trong **13 tuần** (05/01 – 05/04/2026), bao gồm hành trình từ nền tảng mạng AWS đến các ứng dụng AI.
 

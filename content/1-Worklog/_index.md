@@ -6,9 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
 **On this page**, you will find the weekly worklog documenting the learning journey over **13 weeks** (Jan 5 – Apr 5, 2026), covering AWS infrastructure services from foundational networking to AI-powered applications.
 
