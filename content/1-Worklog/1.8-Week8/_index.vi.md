@@ -1,7 +1,7 @@
 ---
 title: "Worklog Tuần 8"
-date: 2024-01-01
-weight: 1
+date: 2026-02-23
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
@@ -9,51 +9,26 @@ pre: " <b> 1.8. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-
 ### Mục tiêu tuần 8:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu Amazon API Gateway và sự khác biệt giữa REST API và HTTP API.
+* Cấu hình endpoints, methods, stages và cài đặt deployment.
+* Bảo mật API với API keys, usage plans và resource policies.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --------- | ------------ | --------------- | -------------- |
+| 2   | - Giới thiệu API Gateway: REST API vs HTTP API vs WebSocket API <br> - Tìm hiểu các khái niệm cốt lõi: Resources, Methods, Stages, Deployments, Throttling <br> - Hiểu API Gateway vs ALB như API front door | 23/02/2026 | 23/02/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - **Thực hành:** <br>&emsp; + Tạo REST API với resource GET /hello <br>&emsp; + Dùng Mock integration để trả về response tĩnh <br>&emsp; + Deploy lên stage `dev` và test với curl | 24/02/2026 | 24/02/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Tìm hiểu ánh xạ request/response của API Gateway: Method Request, Integration Request, Method Response <br> - Học Mapping Templates (VTL) để biến đổi request <br> - Cấu hình CORS headers | 25/02/2026 | 25/02/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Tìm hiểu bảo mật API Gateway: API Keys + Usage Plans, Resource Policies, IAM authorization <br> - **Thực hành:** <br>&emsp; + Tạo API Key và Usage Plan với rate limiting <br>&emsp; + Gắn key vào stage và kiểm tra response khi bị throttle | 26/02/2026 | 26/02/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Tìm hiểu stages và chiến lược deployment API Gateway <br> - Học stage variables và canary deployments <br> - **Thực hành:** Cấu hình hai stage (dev/prod) với throttle khác nhau và stage variables | 27/02/2026 | 27/02/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 8:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
+* Hiểu sự khác biệt giữa REST API, HTTP API và WebSocket API trong API Gateway.
+* Tạo và deploy REST API với mock integration lên stage có tên.
+* Cấu hình CORS và mapping template request/response bằng VTL.
+* Implement xác thực API Key với Usage Plans và xác nhận hành vi throttling.
+* Thiết lập stage deployment dev và prod với cấu hình riêng biệt bằng stage variables.
 * ...
-
-

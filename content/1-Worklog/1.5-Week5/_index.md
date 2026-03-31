@@ -1,57 +1,36 @@
 ---
 title: "Week 5 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-02-02
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}} 
+{{% notice warning %}}
 ⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
 {{% /notice %}}
 
-
 ### Week 5 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand the types of Elastic Load Balancers and select the right one per use case.
+* Configure Application Load Balancer (ALB) with advanced routing rules and health checks.
+* Set up Network Load Balancer (NLB) for high-performance TCP/UDP workloads.
+* Integrate Load Balancer with Auto Scaling Group for elastic traffic distribution.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| 2 (Mon) | - Study ELB types: ALB (Layer 7 / HTTP), NLB (Layer 4 / TCP), GWLB (Layer 3 / appliances) <br> - Understand Listeners, Rules, Target Groups, and health check configurations | 02/02/2026 | 02/02/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 (Tue) | - **Practice:** <br>&emsp; + Create an ALB with an HTTP:80 listener <br>&emsp; + Register EC2 instances into a Target Group <br>&emsp; + Configure health check path (/) and thresholds <br>&emsp; + Verify traffic distribution across instances | 02/03/2026 | 02/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 (Wed) | - Configure ALB advanced listener rules: <br>&emsp; + Path-based routing: /api/* → backend TG, /* → frontend TG <br>&emsp; + Host-based routing: app.example.com vs api.example.com <br>&emsp; + Redirect HTTP → HTTPS | 02/04/2026 | 02/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 (Thu) | - Learn NLB differences: static IP, TCP pass-through, ultra-low latency, TLS termination <br> - **Practice:** <br>&emsp; + Create NLB with TCP:80 listener and Target Group <br>&emsp; + Compare response time between ALB and NLB | 02/05/2026 | 02/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 (Fri) | - Learn ALB + ASG integration patterns <br> - **Practice:** <br>&emsp; + Attach ALB Target Group to existing Auto Scaling Group <br>&emsp; + Trigger a scale-out event and verify new instances receive traffic <br>&emsp; + Review access logs and CloudWatch metrics | 02/06/2026 | 02/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Week 5 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
+* Understood the differences between ALB, NLB, and GWLB and their appropriate use cases.
+* Created an ALB with health-checked Target Groups and verified even traffic distribution.
+* Configured path-based and host-based routing rules on ALB for a multi-service architecture.
+* Deployed an NLB for TCP workloads and observed lower latency compared to ALB.
+* Integrated ALB with an Auto Scaling Group; verified new instances automatically received traffic on scale-out.
+* Analyzed ALB access logs and CloudWatch metrics (RequestCount, TargetResponseTime).
 * ...

@@ -1,57 +1,35 @@
 ---
 title: "Week 12 Worklog"
-date: 2024-01-01
-weight: 2
+date: 2026-03-23
+weight: 12
 chapter: false
 pre: " <b> 1.12. </b> "
 ---
-{{% notice warning %}} 
+{{% notice warning %}}
 ⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
 {{% /notice %}}
 
-
 ### Week 12 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand Retrieval-Augmented Generation (RAG) and why it improves LLM accuracy.
+* Create and configure a Bedrock Knowledge Base backed by an S3 data source.
+* Set up vector embeddings, OpenSearch Serverless, and test semantic search queries.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| 2 (Mon) | - Understand RAG architecture: why LLMs hallucinate and how retrieval grounding helps <br> - Learn RAG components: data ingestion, chunking, vector embedding, vector store, retrieval, augmentation | 03/23/2026 | 03/23/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 (Tue) | - Learn Amazon Bedrock Knowledge Bases: supported data sources (S3, Confluence, SharePoint) <br> - Study vector store options: OpenSearch Serverless, Pinecone, Aurora pgvector <br> - Learn chunking strategies: fixed size, hierarchical, semantic | 03/24/2026 | 03/24/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 (Wed) | - **Practice:** <br>&emsp; + Upload PDF/text documents to S3 as the Knowledge Base data source <br>&emsp; + Create a Bedrock Knowledge Base with Titan Embeddings v2 <br>&emsp; + Create an OpenSearch Serverless collection as the vector store | 03/25/2026 | 03/25/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 (Thu) | - **Practice:** <br>&emsp; + Trigger Knowledge Base sync (data ingestion & embedding) <br>&emsp; + Test semantic retrieval in the Bedrock console (Retrieve API) <br>&emsp; + Use RetrieveAndGenerate API to get grounded answers from Claude 3 | 03/26/2026 | 03/26/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 (Fri) | - Study Knowledge Base session context & citation sources in responses <br> - Learn how to update the KB: add new documents, re-sync <br> - **Practice:** Add new documents to S3, re-sync, and verify retrieval improvements | 03/27/2026 | 03/27/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Week 12 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
+* Understood the RAG pattern and how grounding LLM responses with retrieved documents reduces hallucination.
+* Created a Bedrock Knowledge Base connected to an S3 data source and OpenSearch Serverless vector store.
+* Triggered data ingestion, monitored chunking and embedding, and verified index creation.
+* Queried the Knowledge Base with the Retrieve API and received semantically relevant document chunks.
+* Used RetrieveAndGenerate API to get Claude 3 responses grounded in Knowledge Base content with citations.
+* Updated Knowledge Base with new documents and re-synced to verify fresh retrieval results.
 * ...

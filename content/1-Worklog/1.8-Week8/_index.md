@@ -1,57 +1,34 @@
 ---
 title: "Week 8 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-02-23
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}} 
+{{% notice warning %}}
 ⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
 {{% /notice %}}
 
-
 ### Week 8 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand Amazon API Gateway and the differences between REST API and HTTP API.
+* Configure endpoints, methods, stages, and deployment settings.
+* Secure APIs with API keys, usage plans, and resource policies.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| 2 (Mon) | - Introduction to API Gateway: REST API vs HTTP API vs WebSocket API <br> - Learn core concepts: Resources, Methods, Stages, Deployments, Throttling <br> - Understand API Gateway vs ALB as an API front door | 02/23/2026 | 02/23/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 (Tue) | - **Practice:** <br>&emsp; + Create a REST API with GET /hello resource <br>&emsp; + Use Mock integration to return a static response <br>&emsp; + Deploy to a `dev` stage and test with curl | 02/24/2026 | 02/24/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 (Wed) | - Learn API Gateway request/response mapping: Method Request, Integration Request, Method Response <br> - Study Mapping Templates (VTL) for request transformation <br> - Configure CORS headers | 02/25/2026 | 02/25/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 (Thu) | - Learn API Gateway security: API Keys + Usage Plans, Resource Policies, IAM authorization <br> - **Practice:** <br>&emsp; + Create an API Key and Usage Plan with rate limiting <br>&emsp; + Attach key to a stage and test throttled responses | 02/26/2026 | 02/26/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 (Fri) | - Learn API Gateway stages and deployment strategies <br> - Study stage variables and canary deployments <br> - **Practice:** Configure two stages (dev/prod) with different throttle settings and stage variables | 02/27/2026 | 02/27/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Week 8 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
+* Understood the differences between REST API, HTTP API, and WebSocket API in API Gateway.
+* Created and deployed a REST API with a mock integration to a named stage.
+* Configured CORS and request/response mapping templates using VTL.
+* Implemented API Key authentication with Usage Plans and verified throttling behavior.
+* Set up dev and prod deployment stages with distinct configurations using stage variables.
 * ...

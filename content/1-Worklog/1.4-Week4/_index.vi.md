@@ -1,7 +1,7 @@
 ---
 title: "Worklog Tuần 4"
-date: 2024-01-01
-weight: 1
+date: 2026-01-26
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
@@ -9,51 +9,27 @@ pre: " <b> 1.4. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu các tính năng EC2 nâng cao: placement groups, metadata và các mô hình truy cập an toàn.
+* Tạo Launch Templates và triển khai Auto Scaling Groups (ASG) với dynamic scaling policy.
+* Thiết kế kiến trúc tự phục hồi, chịu lỗi bằng ASG lifecycle hooks.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --------- | ------------ | --------------- | -------------- |
+| 2   | - Tìm hiểu EC2 placement groups: Cluster (độ trễ thấp), Spread (cách ly lỗi), Partition (workloads phân tán) <br> - Học Enhanced Networking (ENA) và lợi ích hiệu suất | 26/01/2026 | 26/01/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Tìm hiểu EC2 Instance Metadata Service v2 (IMDSv2) và User Data <br> - **Thực hành:** <br>&emsp; + Truy vấn instance metadata qua IMDSv2 (dựa trên token) <br>&emsp; + Dùng User Data để bootstrap Nginx khi khởi chạy | 27/01/2026 | 27/01/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Tìm hiểu Launch Templates vs Launch Configurations (lý do ưu tiên LT) <br> - **Thực hành:** Tạo Launch Template với: AMI, instance type, SG, key pair, user data và tags | 28/01/2026 | 28/01/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - **Thực hành:** <br>&emsp; + Tạo Auto Scaling Group dùng Launch Template <br>&emsp; + Cấu hình min=1, max=4, desired=2 trên nhiều AZ <br>&emsp; + Thiết lập Target Tracking Scaling Policy (CPU 50%) | 29/01/2026 | 29/01/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Tìm hiểu ASG lifecycle hooks (sự kiện launching & terminating) <br> - **Thực hành:** <br>&emsp; + Mô phỏng instance lỗi và quan sát ASG tự thay thế <br>&emsp; + Tạo tải CPU và xem sự kiện scale-out <br>&emsp; + Xem lịch sử scaling activity | 30/01/2026 | 30/01/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
+* Hiểu chiến lược EC2 placement group và ảnh hưởng đến độ trễ và cách ly lỗi.
+* Truy vấn instance metadata an toàn bằng xác thực dựa trên token IMDSv2.
+* Tạo Launch Template có version với đầy đủ tham số cấu hình instance.
+* Triển khai ASG trên nhiều AZ với target tracking scaling dựa trên CPU utilization.
+* Xác nhận ASG tự động thay thế instance bị xóa để duy trì desired capacity.
+* Quan sát và phân tích sự kiện scale-out qua CloudWatch metrics và ASG activity logs.
 * ...
-
-

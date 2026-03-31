@@ -1,7 +1,7 @@
 ---
 title: "Worklog Tuần 11"
-date: 2024-01-01
-weight: 2
+date: 2026-03-16
+weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
@@ -9,51 +9,27 @@ pre: " <b> 1.11. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-
 ### Mục tiêu tuần 11:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu các kiến thức cơ bản về Generative AI và bức tranh các mô hình ngôn ngữ lớn (LLM).
+* Khám phá Amazon Bedrock: Foundation Models, truy cập model và Bedrock console.
+* Học kỹ thuật prompt engineering và gọi model qua Bedrock API.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --------- | ------------ | --------------- | -------------- |
+| 2   | - Giới thiệu Generative AI: LLM là gì, transformers, tokens và embeddings <br> - Tổng quan hệ sinh thái Gen AI: OpenAI, Anthropic, Meta, Mistral, Amazon Titan <br> - Tìm hiểu Bedrock khác SageMaker cho Gen AI workloads như thế nào | 16/03/2026 | 16/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Khám phá Bedrock console: danh mục model, yêu cầu truy cập model <br> - Tìm hiểu các loại Foundation Model: sinh văn bản, embeddings, sinh ảnh <br> - **Thực hành:** Bật quyền truy cập model Claude 3, Titan và Llama 3 trong Bedrock | 17/03/2026 | 17/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Tìm hiểu prompt engineering: zero-shot, few-shot, chain-of-thought prompting <br> - Học system prompts vs user prompts và các tham số temperature/top-p <br> - **Thực hành:** Thử nghiệm prompts trong Bedrock Playground (chế độ text & chat) | 18/03/2026 | 18/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Tìm hiểu Bedrock API: `InvokeModel`, `InvokeModelWithResponseStream` <br> - **Thực hành:** <br>&emsp; + Gọi Bedrock API qua AWS SDK (Python boto3) <br>&emsp; + Invoke Claude 3 với structured prompt <br>&emsp; + Xử lý streaming responses | 19/03/2026 | 19/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Tìm hiểu Bedrock Guardrails: lọc nội dung, ẩn PII, từ chối chủ đề <br> - Nghiên cứu Bedrock Model Evaluation và thực hành AI có trách nhiệm <br> - **Thực hành:** Cấu hình Guardrail cơ bản và test kết quả bị chặn | 20/03/2026 | 20/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 11:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
+* Hiểu các khái niệm GenAI cốt lõi: transformers, tokenization, embeddings và các tham số suy luận.
+* Bật quyền truy cập nhiều Foundation Models (Claude 3, Titan, Llama 3) trong Amazon Bedrock.
+* Áp dụng kỹ thuật zero-shot và few-shot prompt engineering trong Bedrock Playground.
+* Gọi Claude 3 qua Python boto3 SDK và xử lý streaming response theo từng chunk.
+* Cấu hình Bedrock Guardrail để lọc nội dung và test với các chủ đề bị hạn chế.
+* Hiểu các cân nhắc AI có trách nhiệm khi triển khai Foundation Models trong production.
 * ...
-
-

@@ -1,7 +1,7 @@
 ---
 title: "Worklog Tuần 10"
-date: 2024-01-01
-weight: 2
+date: 2026-03-09
+weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
@@ -9,51 +9,27 @@ pre: " <b> 1.10. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-
 ### Mục tiêu tuần 10:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu Amazon CloudFront như một mạng phân phối nội dung (CDN) toàn cầu.
+* Cấu hình Origins, Behaviors, Cache Policies và Origin Access Control (OAC).
+* Bảo mật và tối ưu phân phối nội dung cho static assets và dynamic APIs.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --------- | ------------ | --------------- | -------------- |
+| 2   | - Giới thiệu CloudFront: edge locations, Points of Presence (PoPs), regional edge caches <br> - Tìm hiểu các thành phần CloudFront: Distributions, Origins, Behaviors, Cache Policies, TTL | 09/03/2026 | 09/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - **Thực hành:** <br>&emsp; + Tạo CloudFront distribution với S3 origin <br>&emsp; + Cấu hình Origin Access Control (OAC) để chặn truy cập S3 trực tiếp <br>&emsp; + Cập nhật S3 bucket policy chỉ cho phép CloudFront | 10/03/2026 | 10/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Tìm hiểu CloudFront Behaviors: path patterns, cache policies, origin request policies <br> - Cấu hình nhiều behavior: <br>&emsp; + `/api/*` → ALB/API Gateway origin (không cache) <br>&emsp; + `/*` → S3 origin (cache static assets) | 11/03/2026 | 11/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Tìm hiểu bảo mật CloudFront: bắt buộc HTTPS, chứng chỉ SSL tùy chỉnh (ACM), Geo Restriction <br> - Nghiên cứu use case CloudFront Functions vs Lambda@Edge <br> - **Thực hành:** Cấu hình chuyển hướng HTTPS và gắn chứng chỉ ACM | 12/03/2026 | 12/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Tìm hiểu cache invalidation và monitoring CloudFront (Cache Hit Rate, tỷ lệ lỗi 4xx/5xx) <br> - **Thực hành:** <br>&emsp; + Invalidate path pattern sau khi deploy code mới <br>&emsp; + Xem CloudWatch metrics và access logs của distribution | 13/03/2026 | 13/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 10:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
+* Hiểu kiến trúc edge CloudFront và cách PoPs giảm độ trễ cho người dùng trên toàn cầu.
+* Tạo CloudFront distribution với S3 origin được bảo mật bằng Origin Access Control (OAC).
+* Cấu hình routing đa behavior: static assets từ S3 (có cache) và API từ ALB (không cache).
+* Bắt buộc HTTPS-only và gắn chứng chỉ SSL ACM vào distribution.
+* Thực hiện cache invalidation sau deployment và theo dõi Cache Hit Ratio trong CloudWatch.
+* Hiểu khi nào dùng CloudFront Functions vs Lambda@Edge dựa trên execution context.
 * ...
-
-
