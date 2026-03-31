@@ -1,4 +1,4 @@
-baseURL = "https://minhhuan-devops.github.io/"
+baseURL = "/"
 relativeURLs = false
 canonifyURLs = false
 defaultContentLanguage = "en"
