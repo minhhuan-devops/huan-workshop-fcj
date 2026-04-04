@@ -3,7 +3,7 @@ title: "Week 13 Worklog"
 date: 2026-03-30
 weight: 13
 chapter: false
-pre: " <b> 1.13. </b> "
+pre: " <b> 1.13 </b> "
 ---
 
 ### Week 13 Objectives:

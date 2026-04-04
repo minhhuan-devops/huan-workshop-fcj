@@ -3,7 +3,7 @@ title: "Self-Assessment"
 date: 2024-01-01
 weight: 6
 chapter: false
-pre: " <b> 6. </b> "
+pre: " <b> 5. </b> "
 ---
 
 Looking back at the 13-week journey participating in the First Cloud Journey (FCJ) internship program at **Amazon Web Services Vietnam** from **January 5, 2026** to **April 5, 2026**, it has been an incredibly meaningful and challenging period. Starting from the very basics of AWS Cloud to deploying complex architectures with Containers, Serverless, and Generative AI (Amazon Bedrock), I have grown tremendously.

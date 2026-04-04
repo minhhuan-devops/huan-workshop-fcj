@@ -3,26 +3,32 @@ title: "Workshop"
 date: 2024-01-01
 weight: 5
 chapter: false
-pre: " <b> 5. </b> "
+pre: " <b> 4. </b> "
 ---
 
-# Secure Hybrid Access to S3 using VPC Endpoints
+# FPT Event Management System on AWS
+
+![FPT Event Management Architecture](/images/2-Proposal/fpt-event-management.jpg)
 
 #### Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+**FPT Event Management System** provides a comprehensive, highly scalable platform for managing events, issuing tickets, allocating staff, and maintaining venues using an AWS Microservices architecture.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+In this workshop, you will learn how to build, configure, and deploy a robust event management platform utilizing AWS managed services to ensure high availability, security, and scalability during massive flash sales.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+The architecture implements a containerized microservices model:
++ **Frontend** - Hosted on Amazon S3 and distributed globally via Amazon CloudFront, protected by AWS WAF.
++ **API Routing** - Securely routes incoming traffic using Amazon Route 53, API Gateway, and an Application Load Balancer (ALB).
++ **Service Layer** - Domain-specific backend microservices (Auth, Event, Ticket, Staff, Venue, Notification) orchestrated by Amazon ECS.
++ **Event-Driven Messaging** - Amazon SQS buffers workload queues while Amazon SES handles asynchronous email dispatch.
++ **Data Layer** - Amazon RDS (MySQL 8.0 Multi-AZ) for durable transactional data and Amazon ElastiCache (Redis) for high-performance caching.
++ **Monitoring & Storage** - Amazon CloudWatch for centralized logging and Amazon S3 for durable object storage.
 
 #### Content
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+1. [Workshop overview](4.1-Workshop-overview/)
+2. [Prerequisites & Deployment](4.2-Prerequisite-and-deployment/)
+3. [Verify Data & Messaging (RDS, Redis, SQS, SES)](4.3-Verify-data-messaging/)
+4. [Verify Backend Microservices (ECS, ALB)](4.4-Verify-backend/)
+5. [Verify Frontend & API Gateway (S3, CloudFront, WAF, API Gateway)](4.5-Verify-frontend/)
+6. [Clean up](4.6-Cleanup/)

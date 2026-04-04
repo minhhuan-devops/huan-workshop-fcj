@@ -3,7 +3,7 @@ title: "Worklog Tuần 13"
 date: 2026-03-30
 weight: 13
 chapter: false
-pre: " <b> 1.13. </b> "
+pre: " <b> 1.13 </b> "
 ---
 
 ### Mục tiêu tuần 13:

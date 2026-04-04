@@ -3,7 +3,7 @@ title: "Week 4 Worklog"
 date: 2026-01-26
 weight: 4
 chapter: false
-pre: " <b> 1.4. </b> "
+pre: " <b> 1.4 </b> "
 ---
 
 ### Week 4 Objectives:

@@ -3,7 +3,7 @@ title: "Tự đánh giá"
 date: 2024-01-01
 weight: 6
 chapter: false
-pre: " <b> 6. </b> "
+pre: " <b> 5. </b> "
 ---
 
 Nhìn lại hành trình 13 tuần tham gia chương trình thực tập First Cloud Journey (FCJ) tại **Amazon Web Services Vietnam**, từ ngày **05/01/2026** đến **05/04/2026**, đó thực sự là một quãng thời gian vô cùng ý nghĩa và đầy thử thách. Bắt đầu từ những khái niệm căn bản nhất về AWS Cloud cho đến việc triển khai các hệ thống phức tạp với Container, Serverless và cả Generative AI (Amazon Bedrock), bản thân mình đã trưởng thành hơn rất nhiều.

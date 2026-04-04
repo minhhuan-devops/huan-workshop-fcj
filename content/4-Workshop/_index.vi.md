@@ -3,28 +3,32 @@ title: "Workshop"
 date: 2024-01-01
 weight: 5
 chapter: false
-pre: " <b> 5. </b> "
+pre: " <b> 4. </b> "
 ---
 
+# Thiết lập Hệ thống Quản lý Sự kiện FPT trên nền tảng AWS Microservices
 
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+![FPT Event Management Architecture](/images/2-Proposal/fpt-event-management.jpg)
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+**Hệ thống Quản lý Sự kiện FPT** cung cấp một nền tảng toàn diện, có khả năng mở rộng cao để quản lý các sự kiện, phát hành vé, phân bổ nhân sự và địa điểm bằng cách áp dụng kiến trúc AWS Microservices.
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Trong bài workshop này, bạn sẽ học cách xây dựng, cấu hình và triển khai một nền tảng quản lý sự kiện mạnh mẽ trên các dịch vụ được quản lý của AWS nhằm đảm bảo tính khả dụng (High Availability), bảo mật và khả năng mở rộng (Scalability) trong các đợt mở bán vé khối lượng lớn.
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+Hệ thống triển khai một mô hình microservices dưới dạng container:
++ **Frontend** - Lưu trữ trên Amazon S3 và phân phối toàn cầu qua Amazon CloudFront, được bảo vệ bởi AWS WAF.
++ **Định tuyến API** - Điều hướng lưu lượng an toàn thông qua Amazon Route 53, API Gateway và Application Load Balancer (ALB).
++ **Lớp Dịch vụ (Service Layer)** - Các microservices backend theo miền nghiệp vụ (Auth, Event, Ticket, Staff, Venue, Notification) được quản lý bởi Amazon ECS.
++ **Tin nhắn Bất đồng bộ (Event-Driven)** - Hàng đợi Amazon SQS đệm khối lượng công việc sự kiện, trong khi Amazon SES xử lý việc gửi email tự động.
++ **Cơ sở dữ liệu** - Amazon RDS (MySQL 8.0 Multi-AZ) lưu trữ dữ liệu an toàn và Amazon ElastiCache (Redis) tăng tốc độ truy xuất với bộ nhớ đệm.
++ **Giám sát & Lưu trữ** - Amazon CloudWatch để ghi log tập trung phục vụ giám sát và Amazon S3 dùng lưu trữ tĩnh dữ liệu hình ảnh/tài liệu.
 
 #### Nội dung
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+1. [Tổng quan về workshop](4.1-Workshop-overview/)
+2. [Chuẩn bị & Cài đặt](4.2-Prerequisite-and-deployment/)
+3. [Kiểm tra Data & Messaging (RDS, Redis, SQS, SES)](4.3-Verify-data-messaging/)
+4. [Kiểm tra Backend Microservices (ECS, ALB)](4.4-Verify-backend/)
+5. [Kiểm tra Frontend & API Gateway (S3, CloudFront, WAF, API Gateway)](4.5-Verify-frontend/)
+6. [Dọn dẹp tài nguyên](4.6-Cleanup/)
