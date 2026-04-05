@@ -15,19 +15,19 @@ Certain resources, such as S3 buckets containing hosted static files, must be ma
 
 - Enter **S3** in the search bar and select the **S3** service.
 
-![Search for S3 Service](image.png)
+![Search for S3 Service](/4-workshop/4.6-cleanup/image.png)
 
 - Select the Frontend bucket (e.g., `fpt-event-bucket`).
 
-![Select fpt-event-bucket](image-1.png)
+![Select fpt-event-bucket](/4-workshop/4.6-cleanup/image-1.png)
 
 - Select the bucket (or its contents) and click the **Delete** button.
 
-![Select Delete](image-2.png)
+![Select Delete](/4-workshop/4.6-cleanup/image-2.png)
 
 - Type **permanently delete** into the system confirmation box and perform the deletion.
 
-![Accept permanently delete](image-3.png)
+![Accept permanently delete](/4-workshop/4.6-cleanup/image-3.png)
 
 **2. Destroy infrastructure via Terraform:**
 Return to your command line (Terminal), navigate to the `infrastructure` directory, and run the automated cleanup command:

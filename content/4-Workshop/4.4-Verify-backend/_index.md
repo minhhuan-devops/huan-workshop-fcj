@@ -13,37 +13,37 @@ Our microservices are not publicly accessible over the internet but rather run i
 1. **Verify ECS Clusters and Services Status:**
    - Access the **Amazon ECS Console** from the AWS search bar.
    
-   ![Search for ECS](image.png)
+   ![Search for ECS](/4-workshop/4.4-verify-backend/image.png)
    
    - Select the deployed Cluster and navigate to the Services tab to see the list of backend instances (`auth-service`, `event-service`, `ticket-service`, `venue-service`, `notification-service`).
    
-   ![ECS Services list](image-1.png)
+   ![ECS Services list](/4-workshop/4.4-verify-backend/image-1.png)
    
    - Ensure all services have been deployed successfully and show **Active** status.
    
-   ![Service deployment status](image-2.png)
+   ![Service deployment status](/4-workshop/4.4-verify-backend/image-2.png)
    
    - Verify that the number of **Running Tasks** matches the desired configuration deployed by Terraform.
    
-   ![Check Running Tasks](image-3.png)
+   ![Check Running Tasks](/4-workshop/4.4-verify-backend/image-3.png)
 
 2. **Verify Target Groups on the Application Load Balancer:**
    - To verify container routing, go to the **EC2 Console**.
    
-   ![Search for EC2](image-4.png)
+   ![Search for EC2](/4-workshop/4.4-verify-backend/image-4.png)
    
    - Scroll down the left menu to the **Load Balancing** section and select **Load Balancers**.
    
-   ![Select Load Balancers](image-5.png)
+   ![Select Load Balancers](/4-workshop/4.4-verify-backend/image-5.png)
    
    - Click on the internal ALB provisioned for our system (e.g., `fpt-event-alb`).
    
-   ![Select the internal ALB](image-6.png)
+   ![Select the internal ALB](/4-workshop/4.4-verify-backend/image-6.png)
    
    - Switch to the **Listeners and rules** tab to verify that the routing rules are configured correctly.
    
-   ![Check Listeners and Rules](image-7.png)
+   ![Check Listeners and Rules](/4-workshop/4.4-verify-backend/image-7.png)
    
    - Next, go to **Target Groups** (located in the left menu under Load Balancers), select each group and ensure that the backend containers pass the Health Checks and report a **Healthy** status.
    
-   ![Healthy Target Groups status](image-8.png)
+   ![Healthy Target Groups status](/4-workshop/4.4-verify-backend/image-8.png)
