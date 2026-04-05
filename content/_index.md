@@ -29,7 +29,7 @@ pre: " <b> 6. </b> "
 
 &emsp; **Internship Duration:** From 05/01/2026 to 05/04/2026
 
-![Your profile picture](/images/avatar.png)
+<img src="/image.png" alt="Avatar" width="500" />
 
 ### Report Content
 

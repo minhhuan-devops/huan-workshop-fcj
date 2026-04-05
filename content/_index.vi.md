@@ -26,9 +26,7 @@ pre: " <b> 6. </b> "
 
 &emsp; **Thời gian thực tập:** Từ ngày 05/01/2026 đến ngày 05/04/2026
 
-![Ảnh đại diện của bạn](/images/avatar.png)
-
-
+<img src="/image.png" alt="Avatar" width="500" />
 
 ### Nội dung báo cáo
 

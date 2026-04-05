@@ -8,8 +8,44 @@ pre : " <b> 4.5. </b> "
 
 #### Xác minh Giao diện người dùng và API Gateway
 
-Bước cuối cùng là kiểm tra các thành phần Public Facing cho phép người dùng cuối tương tác với hệ thống.
+Bước cuối cùng là kiểm tra các thành phần Public Facing cho phép người dùng cuối (người nằm ngoài mạng VPC) có thể tương tác với hệ thống.
 
-1. **Amazon API Gateway:** Kiểm tra cấu trúc các tuyến (routes) đã triển khai để dẫn kết nối tới nội bộ ALB. Gọi thử API Gateway endpoint công khai để lấy dữ liệu.
-2. **Amazon S3 & CloudFront:** Lấy URL của CloudFront Distribution từ output của Terraform. Truy cập bằng trình duyệt web để xem giao diện ReactJS.
-3. **AWS WAF (Web Application Firewall):** Thử thực hiện một số truy vấn SQL Injection (ví dụ: `?id=1' OR '1'='1`) trên URL của CloudFront để xác minh WAF chặn lưu lượng độc hại với mã lỗi HTTP 403 Forbidden.
+1. **Kiểm tra Amazon API Gateway:**
+   - Đóng vai trò là cửa ngõ giao tiếp công khai, chúng ta cần kiểm tra cấu trúc định tuyến (routes) để đảm bảo traffic được đẩy vào trong nội bộ tới dịch vụ ALB một cách an toàn.
+   - Truy cập **API Gateway** qua thanh tìm kiếm.
+   
+   ![Tìm kiếm API Gateway](image.png)
+   
+   - Chọn API đã được triển khai (ví dụ: `fpt-event-api`).
+   
+   ![Chọn API Gateway fpt-event-api](image-1.png)
+   
+   - Kiểm tra các Routes đã được cấu hình đầy đủ để trỏ tới các microservices chưa.
+   
+   ![Kiểm tra các Routes của API](image-2.png)
+
+2. **Kiểm tra Amazon S3 & CloudFront:**
+   - CloudFront Distribution sẽ phân phối giao diện trang tĩnh ReactJS được lưu trữ tại S3. Chúng ta cần lấy URL của CloudFront để có thể truy cập trang web.
+   - Cụ thể, truy cập dịch vụ **CloudFront** trên trình duyệt AWS.
+   
+   ![Tìm kiếm CloudFront](image-6.png)
+   
+   - Click chọn vào menu **Distributions**.
+   
+   ![Chọn Distributions](image-7.png)
+   
+   - Trải nghiệm trang web bằng cách sao chép và đi đến đường dẫn của **Distribution domain name**.
+   
+   ![Lấy Tên miền URL CloudFront](image-8.png)
+   
+   - Giao diện của trang web sẽ hiển thị nếu triển khai hoạt động ổn định.
+   
+   ![Giao diện hệ thống ReactJS](image-3.png)
+
+3. **Kiểm tra AWS WAF (Web Application Firewall):**
+   - Đảm bảo tính bảo mật được thiết lập bởi lớp tường lửa WAF đối với các lưu lượng độc hại hoặc bất thường.
+   - Vào dịch vụ **WAF & Shield**, chọn **Web ACLs** để đảm bảo WAF đã được tạo thành công và gắn vào CloudFront tương ứng.
+   
+   ![Trang WAF](image-4.png)
+   
+   ![Xác nhận cấu hình WAF](image-5.png)

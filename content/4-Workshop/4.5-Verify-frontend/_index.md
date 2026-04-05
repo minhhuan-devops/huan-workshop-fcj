@@ -8,8 +8,44 @@ pre : " <b> 4.5. </b> "
 
 #### Verify User Interface and API Gateway
 
-The final verification step handles our public-facing infrastructure that end-users interact with.
+The final step is to check the Public Facing components that allow end users (those outside our VPC) to interact with the system.
 
-1. **Amazon API Gateway:** Verify the deployed routes that proxy requests to the internal ALB. Send a test request to the public API Gateway endpoint to fetch event data.
-2. **Amazon S3 & CloudFront:** Retrieve the CloudFront Distribution URL from the Terraform outputs. Visit the URL in your web browser to load the ReactJS frontend.
-3. **AWS WAF:** Simulate a malicious request (e.g., adding an SQL injection pattern like `?id=1' OR '1'='1`) to the CloudFront URL and confirm that WAF blocks the request by returning a HTTP 403 Forbidden.
+1. **Verify Amazon API Gateway:**
+   - Acting as our public gateway, we need to ensure its routes are correctly proxying traffic internally to the ALB.
+   - Access **API Gateway** from the search bar.
+   
+   ![Search for API Gateway](image.png)
+   
+   - Select the deployed API (e.g., `fpt-event-api`).
+   
+   ![Select the fpt-event-api](image-1.png)
+   
+   - Verify that all necessary routes have been linked properly.
+   
+   ![Verify API routes](image-2.png)
+
+2. **Verify Amazon S3 & CloudFront:**
+   - CloudFront serves the static React frontend hosted on S3. You can access the interface via the CloudFront Distribution URL.
+   - Navigate to the **CloudFront** service.
+   
+   ![Search for CloudFront](image-6.png)
+   
+   - Select the **Distributions** menu.
+   
+   ![Select Distributions](image-7.png)
+   
+   - Copy the **Distribution domain name** and navigate to it in a browser window.
+   
+   ![Get the CloudFront URL](image-8.png)
+   
+   - The ReactJS interface should load successfully if the deployment was successful.
+   
+   ![ReactJS Interface success](image-3.png)
+
+3. **Verify AWS WAF (Web Application Firewall):**
+   - Ensure the security rules are in place through WAF Web ACLs to prevent malicious attacks.
+   - Navigate to **WAF & Shield**, select **Web ACLs**, and confirm that the firewall is attached to the CloudFront distribution.
+   
+   ![WAF page](image-4.png)
+   
+   ![Confirm WAF Configuration](image-5.png)

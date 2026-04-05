@@ -1,36 +1,36 @@
 ---
-title: "Self-Assessment"
+title: "Self-evaluation"
 date: 2024-01-01
 weight: 6
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-Looking back at the 13-week journey participating in the First Cloud Journey (FCJ) internship program at **Amazon Web Services Vietnam** from **January 5, 2026** to **April 5, 2026**, it has been an incredibly meaningful and challenging period. Starting from the very basics of AWS Cloud to deploying complex architectures with Containers, Serverless, and Generative AI (Amazon Bedrock), I have grown tremendously.
+Looking back at the 13-week journey doing the First Cloud Journey (FCJ) internship program at **Amazon Web Services Vietnam** (from **05/01/2026** to **05/04/2026**), I have accumulated a considerable amount of practical experience. Transitioning from basic AWS Cloud concepts to directly deploying system models involving Containers, Serverless computing, and Generative AI (Amazon Bedrock) has made me aware that I must continue learning to further improve my core skills.
 
-By getting my hands dirty with building core services like VPC, EC2, Load Balancers, ECS, API Gateway, CloudFront, and notably the Bedrock Agent capstone project, I didn't just practice Cloud skills. I also deepened my understanding of system design thinking, troubleshooting, and self-researching documentation to solve problems.
+The hands-on process of provisioning services such as VPC, EC2, Load Balancers, ECS, API Gateways, CloudFront, and the Bedrock Agent integration project didn’t just train my cloud operating abilities; it also highlighted my limits in troubleshooting and self-detecting technical issues.
 
-Most importantly, the open working environment and the enthusiastic support from the mentors have helped me cultivate a professional attitude, a sense of responsibility, and the ability to work independently.
+The guidance from the mentors shaped my professional conduct, strengthened my sense of project responsibility, and demonstrated how to systematically diagnose problems on my own.
 
-To objectively reflect on my progress, I have evaluated myself against the following criteria:
+To accurately assess my progression, I have summarized my performance against the following criteria:
 
-| No. | Criteria                            | Description                                                                                      | Good | Fair | Average |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | :----: | :----: | :-------: |
-| 1   | **Professional knowledge & skills** | Grasping AWS core services, applying them well in labs, proficient with Console & CLI | ✅    | ☐    | ☐       |
-| 2   | **Ability to learn**                | Quickly catching up with new paradigms (especially GenAI and Bedrock), active researching | ✅    | ☐    | ☐       |
-| 3   | **Proactiveness**                   | Completing weekly tasks without reminders, actively trying to debug issues before asking for help | ✅    | ☐    | ☐       |
-| 4   | **Sense of responsibility**         | Logging work consistently, pushing commits on time every single week                           | ✅    | ☐    | ☐       |
-| 5   | **Discipline**                      | Attending sync-ups punctually, strictly following the program's guidelines                       | ✅    | ☐    | ☐       |
-| 6   | **Progressive mindset**             | Open to mentor feedback, proactively improving from the smallest suggestions                     | ✅    | ☐    | ☐       |
-| 7   | **Communication**                   | Good interaction in the group channel, posing clear and concise questions when stuck             | ☐    | ✅    | ☐       |
-| 8   | **Teamwork**                        | Sharing documents with peers, willing to help out other interns                         | ✅    | ☐    | ☐       |
-| 9   | **Professional conduct**            | Respecting organizational culture, polite communication, prompt replies                          | ✅    | ☐    | ☐       |
-| 10  | **Problem-solving skills**          | Risk management in labs, analyzing logs to find root causes (e.g., IAM, VPC Endpoints)           | ☐    | ✅    | ☐       |
-| 11  | **Contribution**                    | Actively completing the final Bedrock Demo project with practical value                          | ✅    | ☐    | ☐       |
-| 12  | **Overall**                         | Very satisfied with the efforts and the results achieved over the last 3 months                  | ✅    | ☐    | ☐       |
+| No. | Criteria                            | Description                                                                                            | Good | Fair | Average |
+| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------------ | :---: | :---: | :----------: |
+| 1   | **Professional Knowledge:**         | Grasped the fundamentals of core AWS services and applied them correctly; need to improve my precision.| ✅   | ☐   | ☐          |
+| 2   | **Learning Ability:**               | Kept up with new materials systematically (GenAI, Bedrock) and actively read up on extra documentation.| ✅   | ☐   | ☐          |
+| 3   | **Proactiveness:**                  | Completed weekly labs on schedule and tried to debug foundational errors before asking for help.       | ✅   | ☐   | ☐          |
+| 4   | **Responsibility:**                 | Authored complete Worklog reports and maintained a standard weekly code commit schedule.               | ✅   | ☐   | ☐          |
+| 5   | **Discipline:**                     | Followed program guidelines closely and regularly attended the required team sync-up meetings.         | ✅   | ☐   | ☐          |
+| 6   | **Progressiveness:**                | Accepted feedback from mentors directly and modified the code to align with operational standards.     | ✅   | ☐   | ☐          |
+| 7   | **Communication:**                  | Able to convey technical problems concisely, though the frequency of proactive discussions was moderate| ☐   | ✅   | ☐          |
+| 8   | **Team Collaboration:**             | Shared useful documentation in the chat and helped other interns debug issues when possible.           | ✅   | ☐   | ☐          |
+| 9   | **Professional Conduct:**           | Used respectful language, replied promptly to supervisors, and respected the organizational culture.   | ✅   | ☐   | ☐          |
+| 10  | **Problem-Solving:**                | Analyzed CloudWatch logs and IAM/VPC errors; still need to speed up the fault-isolation process.     | ☐   | ✅   | ☐          |
+| 11  | **Overall Contribution:**           | Delivered a working Bedrock Demo project properly satisfying the requirements at the final phase.      | ✅   | ☐   | ☐          |
+| 12  | **Overall Assessment:**             | Obtained an essential cloud foundation and clearly identified a clear technical learning path.         | ✅   | ☐   | ☐          |
 
-### Areas for Improvement
+### Key Areas for Ongoing Improvement
 
-* I need to further refine my English reading and comprehension skills to dive deeper into official AWS documentation and best-practice whitepapers.  
-* I want to enhance my security mindset during architecture design, as sometimes I prioritized "making it work" over "making it secure".
-* I should improve my public speaking and presentation skills to confidently explain architectural solutions and ideas to an audience.
+- **Advanced English Documentation Reading:** I need to build up my technical vocabulary so I can consume AWS specifics faster. This is vital to optimizing architecture in line with distributed system best practices.
+- **Security Design Mindset:** I must enforce a "secure-by-design" approach when drafting network diagrams, breaking my habit of settling for the fastest solution just to make the code run.
+- **Technical Communication:** I need to better structure how I explain and diagram system pipelines so that I can communicate my engineering solutions more confidently and clearly to a given audience.

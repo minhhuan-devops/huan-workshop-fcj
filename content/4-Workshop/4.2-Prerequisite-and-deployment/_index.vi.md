@@ -87,7 +87,7 @@ terraform --version
 Sau khi đã cài đặt tất cả các công cụ cần thiết, bạn hãy clone mã nguồn về và chạy các lệnh dưới đây để tự động triển khai toàn bộ hệ thống:
 
 ```bash
-git clone https://github.com/FPT-EVENT-MANAGEMENT-OJT/FPT_EVENT_MANAGEMENT_Microservices.git # (hoặc đường link repo của bạn)
+git clone https://github.com/FPT-EVENT-MANAGEMENT-OJT/FPT_EVENT_MANAGEMENT_Microservices.git
 cd FPT_EVENT_MANAGEMENT_Microservices/infrastructure
 terraform init
 terraform plan
