@@ -1,0 +1,11 @@
+{{ $src := .Destination }}
+{{ if strings.HasPrefix $src "http" }}
+<img src="{{ $src | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
+{{ else }}
+  {{ $res := .Page.Resources.GetMatch $src }}
+  {{ if $res }}
+  <img src="{{ $res.RelPermalink }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
+  {{ else }}
+  <img src="{{ $src | relURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
+  {{ end }}
+{{ end }}
