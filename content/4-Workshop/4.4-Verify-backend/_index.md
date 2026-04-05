@@ -6,44 +6,60 @@ chapter : false
 pre : " <b> 4.4. </b> "
 ---
 
-#### Verify ECS Services running on AWS Fargate
+#### Verify ECS Services Running on Fargate
 
-Our microservices are not publicly accessible over the internet but rather run in a private subnet, behind an internal Application Load Balancer (ALB).
+The system's microservices operate inside a private subnet and communicate with each other through an internal Application Load Balancer (ALB) — they are never exposed directly to the public internet.
 
-1. **Verify ECS Clusters and Services Status:**
-   - Access the **Amazon ECS Console** from the AWS search bar.
-   
-   ![Search for ECS](/4-workshop/4.4-verify-backend/image.png)
-   
-   - Select the deployed Cluster and navigate to the Services tab to see the list of backend instances (`auth-service`, `event-service`, `ticket-service`, `venue-service`, `notification-service`).
-   
-   ![ECS Services list](/4-workshop/4.4-verify-backend/image-1.png)
-   
-   - Ensure all services have been deployed successfully and show **Active** status.
-   
-   ![Service deployment status](/4-workshop/4.4-verify-backend/image-2.png)
-   
-   - Verify that the number of **Running Tasks** matches the desired configuration deployed by Terraform.
-   
-   ![Check Running Tasks](/4-workshop/4.4-verify-backend/image-3.png)
+---
 
-2. **Verify Target Groups on the Application Load Balancer:**
-   - To verify container routing, go to the **EC2 Console**.
-   
-   ![Search for EC2](/4-workshop/4.4-verify-backend/image-4.png)
-   
-   - Scroll down the left menu to the **Load Balancing** section and select **Load Balancers**.
-   
-   ![Select Load Balancers](/4-workshop/4.4-verify-backend/image-5.png)
-   
-   - Click on the internal ALB provisioned for our system (e.g., `fpt-event-alb`).
-   
-   ![Select the internal ALB](/4-workshop/4.4-verify-backend/image-6.png)
-   
-   - Switch to the **Listeners and rules** tab to verify that the routing rules are configured correctly.
-   
-   ![Check Listeners and Rules](/4-workshop/4.4-verify-backend/image-7.png)
-   
-   - Next, go to **Target Groups** (located in the left menu under Load Balancers), select each group and ensure that the backend containers pass the Health Checks and report a **Healthy** status.
-   
-   ![Healthy Target Groups status](/4-workshop/4.4-verify-backend/image-8.png)
+### 1. Amazon ECS (Elastic Container Service)
+
+Amazon ECS is a container orchestration service for managing Docker containers. Combined with AWS Fargate (a serverless compute engine), you do not need to manage any underlying EC2 instances — AWS automatically provisions the right amount of CPU and RAM for each container.
+
+**Check the status of ECS Clusters and Services:**
+
+- Enter **ECS** in the search bar and select **Elastic Container Service**.
+
+![Search for ECS](/4-workshop/4.4-verify-backend/image.png)
+
+- Select your Cluster and review the list of services (`auth-service`, `event-service`, `ticket-service`, `venue-service`, `notification-service`).
+
+![List of ECS Services](/4-workshop/4.4-verify-backend/image-1.png)
+
+- Confirm all services are in an **Active** state.
+
+![ECS Service Active state](/4-workshop/4.4-verify-backend/image-2.png)
+
+- Verify the **Running Tasks** count matches your desired configuration.
+
+![Running Tasks count](/4-workshop/4.4-verify-backend/image-3.png)
+
+---
+
+### 2. Application Load Balancer (ALB) & Target Groups
+
+The Application Load Balancer is an intelligent traffic distributor — it receives requests from the API Gateway and forwards them to the appropriate available backend container. Target Groups define which set of containers receives traffic from each route.
+
+**Verify that Target Groups are in a Healthy state:**
+
+- Enter **EC2** in the search bar and navigate to the **EC2 Console**.
+
+![Search for EC2 Console](/4-workshop/4.4-verify-backend/image-4.png)
+
+- In the left menu, scroll down to **Load Balancing** and select **Load Balancers**.
+
+![Select Load Balancers](/4-workshop/4.4-verify-backend/image-5.png)
+
+- Select the internal ALB (e.g., `fpt-event-alb`).
+
+![Select internal ALB](/4-workshop/4.4-verify-backend/image-6.png)
+
+- Open the **Listeners and rules** tab to review routing configurations.
+
+![Listeners and Rules tab](/4-workshop/4.4-verify-backend/image-7.png)
+
+- Navigate to **Target Groups** (left menu, below Load Balancers) and confirm all containers pass the Health Check showing a **Healthy** status.
+
+![Target Groups Healthy status](/4-workshop/4.4-verify-backend/image-8.png)
+
+![Target Group Health Check detail](/4-workshop/4.4-verify-backend/image-9.png)

@@ -8,44 +8,64 @@ pre : " <b> 4.5. </b> "
 
 #### Xác minh Giao diện người dùng và API Gateway
 
-Bước cuối cùng là kiểm tra các thành phần Public Facing cho phép người dùng cuối (người nằm ngoài mạng VPC) có thể tương tác với hệ thống.
+Bước này kiểm tra các thành phần tiếp xúc trực tiếp với người dùng cuối (Public Facing) — những thứ mà người dùng bên ngoài mạng VPC có thể truy cập được.
 
-1. **Kiểm tra Amazon API Gateway:**
-   - Đóng vai trò là cửa ngõ giao tiếp công khai, chúng ta cần kiểm tra cấu trúc định tuyến (routes) để đảm bảo traffic được đẩy vào trong nội bộ tới dịch vụ ALB một cách an toàn.
-   - Truy cập **API Gateway** qua thanh tìm kiếm.
-   
-   ![Tìm kiếm API Gateway](/4-workshop/4.5-verify-frontend/image.png)
-   
-   - Chọn API đã được triển khai (ví dụ: `fpt-event-api`).
-   
-   ![Chọn API Gateway fpt-event-api](/4-workshop/4.5-verify-frontend/image-1.png)
-   
-   - Kiểm tra các Routes đã được cấu hình đầy đủ để trỏ tới các microservices chưa.
-   
-   ![Kiểm tra các Routes của API](/4-workshop/4.5-verify-frontend/image-2.png)
+---
 
-2. **Kiểm tra Amazon S3 & CloudFront:**
-   - CloudFront Distribution sẽ phân phối giao diện trang tĩnh ReactJS được lưu trữ tại S3. Chúng ta cần lấy URL của CloudFront để có thể truy cập trang web.
-   - Cụ thể, truy cập dịch vụ **CloudFront** trên trình duyệt AWS.
-   
-   ![Tìm kiếm CloudFront](/4-workshop/4.5-verify-frontend/image-6.png)
-   
-   - Click chọn vào menu **Distributions**.
-   
-   ![Chọn Distributions](/4-workshop/4.5-verify-frontend/image-7.png)
-   
-   - Trải nghiệm trang web bằng cách sao chép và đi đến đường dẫn của **Distribution domain name**.
-   
-   ![Lấy Tên miền URL CloudFront](/4-workshop/4.5-verify-frontend/image-8.png)
-   
-   - Giao diện của trang web sẽ hiển thị nếu triển khai hoạt động ổn định.
-   
-   ![Giao diện hệ thống ReactJS](/4-workshop/4.5-verify-frontend/image-3.png)
+### 1. Amazon API Gateway
 
-3. **Kiểm tra AWS WAF (Web Application Firewall):**
-   - Đảm bảo tính bảo mật được thiết lập bởi lớp tường lửa WAF đối với các lưu lượng độc hại hoặc bất thường.
-   - Vào dịch vụ **WAF & Shield**, chọn **Web ACLs** để đảm bảo WAF đã được tạo thành công và gắn vào CloudFront tương ứng.
-   
-   ![Trang WAF](/4-workshop/4.5-verify-frontend/image-4.png)
-   
-   ![Xác nhận cấu hình WAF](/4-workshop/4.5-verify-frontend/image-5.png)
+Amazon API Gateway là "cửa ngõ" duy nhất tiếp nhận mọi yêu cầu API từ Internet vào hệ thống backend. Nó cung cấp cơ chế giới hạn tốc độ gọi (rate-limiting), bảo mật và định tuyến đúng đến từng microservice nội bộ.
+
+**Kiểm tra các Routes đã được cấu hình đầy đủ:**
+
+- Nhập **API Gateway** vào thanh tìm kiếm và chọn dịch vụ.
+
+![Tìm kiếm API Gateway](/4-workshop/4.5-verify-frontend/image.png)
+
+- Chọn API đã được triển khai (ví dụ: `fpt-event-api`).
+
+![Chọn API fpt-event-api](/4-workshop/4.5-verify-frontend/image-1.png)
+
+- Kiểm tra các Routes để đảm bảo đã được cấu hình đầy đủ trỏ tới các microservice.
+
+![Kiểm tra Routes của API Gateway](/4-workshop/4.5-verify-frontend/image-2.png)
+
+---
+
+### 2. Amazon S3 & CloudFront
+
+Amazon S3 là kho lưu trữ đối tượng dùng để host các file tĩnh của Frontend ReactJS. Amazon CloudFront là mạng phân phối nội dung (CDN) toàn cầu — nó cache các file tĩnh từ S3 tại các điểm phân phối (edge location) gần người dùng nhất để trang web tải nhanh hơn đáng kể.
+
+**Lấy URL của CloudFront để truy cập trang web:**
+
+- Nhập **CloudFront** vào thanh tìm kiếm và chọn dịch vụ.
+
+![Tìm kiếm CloudFront](/4-workshop/4.5-verify-frontend/image-6.png)
+
+- Chọn **Distributions** từ menu bên trái.
+
+![Chọn Distributions](/4-workshop/4.5-verify-frontend/image-7.png)
+
+- Sao chép **Distribution domain name** và mở trên trình duyệt để truy cập trang web.
+
+![Lấy Domain Name của CloudFront](/4-workshop/4.5-verify-frontend/image-8.png)
+
+- Giao diện ReactJS hiển thị thành công xác nhận toàn bộ hệ thống hoạt động ổn định.
+
+![Giao diện trang web ReactJS](/4-workshop/4.5-verify-frontend/image-3.png)
+
+---
+
+### 3. AWS WAF (Web Application Firewall)
+
+AWS WAF là tường lửa ứng dụng web chuyên nhận diện và chặn các lưu lượng độc hại — như tấn công SQL Injection, XSS — ngay tại lớp CloudFront trước khi chúng chạm đến hệ thống backend.
+
+**Xác nhận WAF đã gắn vào CloudFront:**
+
+- Nhập **WAF & Shield** vào thanh tìm kiếm và chọn **Web ACLs**.
+
+![Trang WAF & Shield](/4-workshop/4.5-verify-frontend/image-4.png)
+
+- Xác nhận Web ACL đã được tạo và gắn (associated) đúng vào CloudFront Distribution.
+
+![Xác nhận cấu hình WAF trên CloudFront](/4-workshop/4.5-verify-frontend/image-5.png)
