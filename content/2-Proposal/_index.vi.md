@@ -28,11 +28,11 @@ Với các sự kiện quy mô lớn, việc mở bán vé (flash sale) thườn
 **Lưu trình vận hành (Event Lifecycle)**  
 Hệ thống bao phủ toàn bộ vòng đời của một sự kiện:
 - **Ban tổ chức (Organizer)** gửi yêu cầu tổ chức sự kiện và đặt chỗ khu vực địa điểm (venue).
-- **Quản trị viên (Admin)** phê duyệt yêu cầu và hệ thống mở bán vé.
-- **Sinh viên (Student)** tiến hành mua vé thông qua Ví điện tử (Wallet) hoặc VNPay.
-- **Hệ thống** tự động phát hành vé dưới dạng tệp PDF kèm mã QR và gửi email thông báo.
-- **Nhân viên (Staff)** quét mã QR tại quầy check-in và tự động cập nhật báo cáo điểm danh.
-
+- **Nhân viên (Staff)** xem xét và phê duyệt yêu cầu, sau đó mở bán vé.
+- **Sinh viên (Student)** tiến hành mua vé thông qua Ví điện tử (Wallet) hoặc VNPay và nhận được vé PDF kèm mã QR qua email.
+- **Ban tổ chức (Organizer)** quét mã QR tại quầy check-in/check-out để xác nhận và ghi nhận sự tham dự của sinh viên.
+- **Sinh viên (Student)** gửi đơn report nếu có vấn đề (ghế bị hỏng, không đúng vị trí) để yêu cầu hoàn tiền.
+- **Nhân viên (Staff)** xem xét và xử lý các yêu cầu hoàn tiền từ sinh viên.
 **Mục tiêu thiết kế (Design Targets)**  
 - **Tính toàn vẹn dữ liệu cao (High data integrity):** Đặc biệt là cho các luồng thanh toán và luồng cấp phát vé.
 - **Khả năng xử lý đồng thời tốt (Good concurrency behavior):** Đảm bảo hệ thống ổn định trong cùng một thời điểm có lượng lớn người truy cập mua vé đồng loạt.

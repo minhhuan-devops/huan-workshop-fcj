@@ -24,10 +24,11 @@ The **FPT Event Management** system is designed to provide a comprehensive, high
 
 **Event Lifecycle** The system covers the full lifecycle of an event:
 - **Organizer:** Submits an event request and books the venue area.
-- **Admin:** Approves the request and opens ticket sales.
-- **Student:** Purchases tickets using an e-Wallet or VNPay.
-- **System:** Automatically issues a PDF ticket with a QR code and dispatches a notification email.
-- **Staff:** Scans the QR code at the check-in counter, which automatically updates attendance reports.
+- **Staff:** Reviews and approves the request, then opens ticket sales.
+- **Student:** Purchases tickets using an e-Wallet or VNPay and receives a PDF ticket with QR code via email.
+- **Organizer:** Scans the QR code at check-in/check-out to verify and record student attendance.
+- **Student:** Submits a report if there are issues (damaged seats, incorrect seat allocation) to request a refund.
+- **Staff:** Reviews and processes refund requests from students.
 
 **Design Targets** - **High data integrity:** Strictly enforced for payment scenarios and the ticket issuance flow.
 - **Good concurrency behavior:** Evaluated to ensure the system withstands high traffic comfortably during simultaneous ticket purchases.
