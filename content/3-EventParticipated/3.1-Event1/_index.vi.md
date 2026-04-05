@@ -1,122 +1,118 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2026-03-14
 weight: 1
 chapter: false
-pre: " <b> 3.1 </b> "
+pre: " <b> 3.1. </b> "
 ---
 
+### Banner sự kiện
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+![Banner Event](/images/3-EventParticipated/3.1-Event1/Cloud_Mastery_2026.jpg)
 
-### Mục Đích Của Sự Kiện
+## 1. Building AI Agent with Strands (Banh Cam Vinh)
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+### Mục tiêu sự kiện
 
-### Danh Sách Diễn Giả
+- Giới thiệu khái niệm nền tảng về **LLM** và giới hạn của **LLM** khi hoạt động độc lập.
+- Trình bày vì sao cần thiết kế **AI Agent** (**multi-step reasoning**, **tool integration**, **autonomous behaviour**).
+- Giới thiệu **Strands Agents**: workflow, loại **tools**, chuẩn mở và cách **Strands** giảm "glue code".
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+### Diễn giả
 
-### Nội Dung Nổi Bật
+- **Banh Cam Vinh** — "Building AI Agent with Strands"
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+![Bài phát biểu của Banh Cam Vinh](/images/3-EventParticipated/3.1-Event1/photo-1.jpg)
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+### Nội dung nổi bật
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+- Giới hạn của **standalone LLM**: chỉ trả lời chat, thiếu trạng thái dài hạn, không kết nối API/DB, khó xử lý quy trình nhiều bước.
+- Kết nối **LLM** với thế giới thực qua **tools** (APIs, databases, external services) để biến **LLM** thành agent có khả năng hành động.
+- Định nghĩa **AI Agent**: **LLM** làm "bộ não" cộng với **lập kế hoạch**, **gọi tools**, đọc kết quả và thực thi lặp đi lặp lại.
+- **Strands Agents** cung cấp workflow chuẩn, bộ công cụ và chuẩn provider open-standard, giúp tăng tốc xây dựng **agentic loops**.
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+### Bài học rút ra
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+- Để **LLM** thực sự "làm việc", cần thiết kế **agent** chứ không chỉ tối ưu prompt.
+- **Tool calling** và **agentic loop** là lõi: lập kế hoạch → chọn tool → gọi tool → đọc kết quả → lặp lại.
+- **Strands** giảm đáng kể công sức viết "glue code" khi xây hệ thống **agent-based**.
 
-#### Domain-Driven Design (DDD)
+### Ứng dụng
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+- Xây chatbot nội bộ (FAQ, IT support, CS): thiết kế **agents** có khả năng gọi APIs công ty (tickets, HR, CRM).
+- Xử lý workflow nhiều bước (onboarding, đăng ký dịch vụ): dùng **agents** để orchestration các hành động tự động.
+- Map APIs/services nội bộ thành tools để **agents** điều phối thay vì viết logic thủ công.
 
-#### Event-Driven Architecture
+---
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+## 2. Automated Prompt Engineering: Enhancing LLM Output Quality (Nguyen Tuan Thinh)
 
-#### Compute Evolution
+### Mục tiêu sự kiện
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+- Giải thích tầm quan trọng của **prompt engineering**: generic prompts tạo ra generic outputs và chi phí token cao hơn.
+- Hệ thống hóa các thành phần của prompt mạnh và giới thiệu kỹ thuật nâng cao (**CoT**, **RAG**, **ToT**, v.v.).
+- Demo **Proptimizer** — một browser extension tối ưu prompts và tổng quan kiến trúc **AWS** của nó.
 
-#### Amazon Q Developer
+### Diễn giả
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+- **Nguyen Tuan Thinh** — DevOps Engineer, First Cloud AI Journey
 
-### Những Gì Học Được
+![Bài phát biểu của Nguyen Tuan Thinh](/images/3-EventParticipated/3.1-Event1/photo-2.jpg)
 
-#### Tư Duy Thiết Kế
+### Nội dung nổi bật
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+- "Generic prompts → Generic outputs": prompt mạnh bao gồm **Role**, **Instruction**, **Context**, **Input Data**, **Output Format**, **Examples**, **Constraints**.
+- Ví dụ cụ thể cho thấy prompts chính xác tạo ra outputs rõ ràng hơn, rẻ hơn.
+- Kỹ thuật nâng cao: **Chain-of-Thought (CoT)**, **Self-Consistency**, **Tree-of-Thoughts (ToT)**, **Retrieval-Augmented Generation (RAG)**, **Role Prompting**.
+- Demo **Proptimizer** và kiến trúc của nó dùng **CloudFront**, **S3**, **Cognito**, **API Gateway**, và **Lambda**.
 
-#### Kiến Trúc Kỹ Thuật
+### Bài học rút ra
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+- **Prompt engineering** là kỹ năng cốt lõi: coi prompts như specifications (role, task, context, format, examples, constraints).
+- Tối ưu prompts giảm chi phí token và tăng độ ổn định và độ chính xác của kết quả.
+- Kỹ thuật như **CoT/RAG/ToT** cải thiện reasoning vượt qua các câu trả lời single-shot.
 
-#### Chiến Lược Hiện Đại Hóa
+### Ứng dụng
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+- Dùng standard prompt template cho các tác vụ (code, summary, analysis) để đảm bảo reliable outputs.
+- Chuẩn hóa prompt templates và logging trong production để iteratively cải thiện performance.
+- Xem xét **Proptimizer**-style tooling và **AWS** patterns nếu xây dựng prompt-optimization products.
 
-### Ứng Dụng Vào Công Việc
+---
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+## 3. AIoT Project: Locker Management (Aiden Dinh)
 
-### Trải nghiệm trong event
+### Mục tiêu sự kiện
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+- Trình bày một dự án **AIoT** thực tế: hệ thống quản lý locker tự động sử dụng sensors, **RFID**, và **AI**.
+- Chia sẻ kiến trúc hardware + cloud (**AWS**), data flow, costs, và working demo.
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+### Diễn giả
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+- **Aiden Dinh** — Katalon Operation Engineer, "AI-Powered Projects – AIoT Project: Locker Management"
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+![Bài phát biểu của Aiden Dinh](/images/3-EventParticipated/3.1-Event1/photo-3.jpg)
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+### Nội dung nổi bật
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+- Bài toán: tự động hóa quy trình mượn locker để giảm phụ thuộc manual manager.
+- Kiến trúc: **Arduino** (edge) + **Raspberry Pi** (controller, **MQTT**) + sensors (reed switch, **RFID**) + camera.
+- Cloud: **AWS IoT Core (MQTT)**, **S3** (images), **DynamoDB** (members/transactions), **Lambda** (**Rekognition**), **Amplify** (monitoring UI).
+- Flow: **RFID**/sensor events kích hoạt photo capture → **Lambda** chạy **Rekognition** → match against collection → record transaction trong **DB**.
 
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+### Bài học rút ra
+
+- Kết hợp sensing, connectivity, và **AI** giải quyết physical asset-management problems hiệu quả.
+- **Rekognition** + **RFID** bật tính năng auditable borrow/return logs (ai, khi nào, cái gì).
+- **AWS IoT Core** và serverless services cho phép scaling đến nhiều lockers và locations.
+
+### Ứng dụng
+
+- Áp dụng design này cho lab equipment inventory, smart cabinets, hoặc automated lending systems.
+- Dùng project như IoT/Cloud case study cho coursework hoặc portfolio.
+
+---
+
+## Tổng kết
+
+Sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp em thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.

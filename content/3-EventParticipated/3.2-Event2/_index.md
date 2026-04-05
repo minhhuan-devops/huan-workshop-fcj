@@ -1,123 +1,69 @@
 ---
-title: "Event 1"
-date: 2024-01-01
-weight: 1
+title: "Event 2"
+date: 2026-03-21
+weight: 2
 chapter: false
-pre: " <b> 3.2 </b> "
+pre: " <b> 3.2. </b> "
 ---
 
+### Event Banner
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+![FCAJ Community Day Banner](/images/3-EventParticipated/3.2-Event2/AWS_FCAJ_Community_Day.png)
+
+## Summary Report: "FCAJ Community Day"
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Identify the drawbacks of legacy application architecture and traditional approaches when deploying at cloud scale.
+- Transition to modern application architecture — Microservices, Platform Engineering, and GenAIOps for modern applications on AWS.
+- Explore Event-Driven Architecture for GenAI workflows, multi-agent systems, observability, and edge services.
+- Understand Compute Evolution: leverage Kubernetes/EKS, serverless, and AI/ML services like Amazon Bedrock and Nova Embeddings for multimodal GenAI.
+- Utilize modern tools like Amazon Q Developer, CloudFront, Langfuse, and GraphRAG to increase productivity, security, and performance.
 
 ### Speakers
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Hai Bui** — Engineering Manager, GoTymeX
+- **Phuc Dang** — Cloud Architect, GoTymeX
+- **Phap Nguyen** — Cloud Engineer, VPBank
+- **Phat Pham** — Software Engineer, Katalon
+- **Nghi Danh** — AI Engineer, Ronova Cloud
+- **Phong Nguyen** — Senior Software Engineer, Sympl
+- **Thinh Nguyen** — DevOps Engineer, First Cloud AI Journey (FCAJ)
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### Legacy Architecture Drawbacks
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+Difficult to scale, complex operations, lacking observability, and unsuitable for GenAI workloads.
 
-#### Transitioning to modern application architecture – Microservices
+#### Microservices & Platform Engineering
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
-
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
-
-#### Domain-Driven Design (DDD)
-
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+Standardize infrastructure for dev teams; clear domain separation enables faster CI/CD pipelines.
 
 #### Event-Driven Architecture
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+GenAIOps, multi-agent workflows, GraphRAG, and observability for AI applications in production environments.
 
 #### Compute Evolution
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+Combining EKS, serverless compute, Bedrock, Nova Embeddings, and managed services for multimodal GenAI.
 
-#### Amazon Q Developer
+#### Amazon Q Developer & Modern Tools
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+CloudFront, Langfuse, and Bedrock accelerate code shipping, improve developer experience, and simplify operations.
 
 ### Key Takeaways
 
-#### Design Mindset
-
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
-
-#### Technical Architecture
-
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+- **Design Mindset**: Platform-first, event-driven, and agentic thinking when architecting new systems or modernizing legacy ones.
+- **Technical Architecture**: Understanding the modern AWS AI/Cloud stack — DevOps/GenAIOps, EKS, Bedrock, GraphRAG, multi-agent orchestration, CloudFront edge layer.
+- **Modernization Strategy**: Gradually transition legacy systems to microservices and GenAI-ready architecture with observability and security built in.
 
 ### Applying to Work
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- Apply AWS DevOps Fundamentals and GenAIOps practices for GenAI projects: CI/CD, monitoring, cost & security management.
+- Refactor systems toward event-driven architecture; use GraphRAG and multi-agent workflows for complex business processes.
+- Optimize performance, cost, and security with Amazon CloudFront and edge services for web/API and GenAI applications.
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
-
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
-
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
-
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+Attending **FCAJ Community Day** was an invaluable experience. Seven speakers from GoTymeX, VPBank, Katalon, Ronova Cloud, Sympl, and FCAJ shared real-world expertise on cloud, DevOps, and GenAI. The technical sessions on GenAIOps, multimodal GenAI, and CloudFront gave me a comprehensive view of how to build modern platforms and architect GenAI applications on AWS. The event also provided direct opportunities to engage with speakers on career pathways and internship opportunities.

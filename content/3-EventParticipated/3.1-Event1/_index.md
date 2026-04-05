@@ -1,123 +1,118 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2026-03-14
 weight: 1
 chapter: false
-pre: " <b> 3.1 </b> "
+pre: " <b> 3.1. </b> "
 ---
 
+### Event Banner
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+![Banner Event](/images/3-EventParticipated/3.1-Event1/Cloud_Mastery_2026.jpg)
+
+## 1. Building AI Agent with Strands (Banh Cam Vinh)
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Introduce foundational **LLM** concepts and limitations of **standalone LLMs**.
+- Explain why **AI Agents** are needed (**multi-step reasoning**, **tool integration**, **autonomous behavior**).
+- Present **Strands Agents**: workflow, tool types, open standards, and how **Strands** reduces glue code.
 
-### Speakers
+### Speaker
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Banh Cam Vinh** — "Building AI Agent with Strands"
+
+![Banh Cam Vinh's speech](/images/3-EventParticipated/3.1-Event1/photo-1.jpg)
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
-
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
-
-#### Transitioning to modern application architecture – Microservices
-
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
-
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
-
-#### Domain-Driven Design (DDD)
-
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
-
-#### Event-Driven Architecture
-
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+- Limitations of **standalone LLMs**: chat-only behavior, no long-term state, no API/DB connections, difficulty with multi-step processes.
+- Connecting **LLMs** to the real world via **tools** (APIs, databases, external services) to enable actionable agents.
+- **AI Agent** definition: **LLM** as the "brain" plus **planning**, **tool-calling**, result interpretation, and iterative execution.
+- **Strands Agents** provide standardized workflows, toolkits, and open-provider standards that speed up building **agentic loops**.
 
 ### Key Takeaways
 
-#### Design Mindset
-
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
-
-#### Technical Architecture
-
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+- To make **LLMs** truly productive, design **agents** rather than relying on prompts alone.
+- **Tool-calling** and the **agentic loop** are core: plan → select tool → call tool → read result → repeat.
+- **Strands** significantly reduces engineering effort for agent-based systems.
 
 ### Applying to Work
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- For internal chatbots (FAQ, IT support, CS), design **agents** that can call company APIs (tickets, HR, CRM).
+- For multi-step workflows (onboarding, service registration), use **agents** to orchestrate actions automatically.
+- Map internal APIs/services to tools and let **agents** orchestrate instead of hard-coding workflows.
 
-### Event Experience
+---
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+## 2. Automated Prompt Engineering: Enhancing LLM Output Quality (Nguyen Tuan Thinh)
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+### Event Objectives
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+- Explain why **prompt engineering** matters: generic prompts produce generic outputs and higher token costs.
+- Systematize components of a strong prompt and introduce advanced techniques (**CoT**, **RAG**, **ToT**, etc.).
+- Demo **Proptimizer** — a browser extension that optimizes prompts, and an overview of its **AWS** architecture.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+### Speaker
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+- **Nguyen Tuan Thinh** — DevOps Engineer, First Cloud AI Journey
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+![Nguyen Tuan Thinh's speech](/images/3-EventParticipated/3.1-Event1/photo-2.jpg)
 
-#### Some event photos
-*Add your event photos here*  
+### Key Highlights
 
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+- "Generic prompts → Generic outputs": a strong prompt includes **Role**, **Instruction**, **Context**, **Input Data**, **Output Format**, **Examples**, **Constraints**.
+- Concrete examples show how precise prompts produce clearer, cheaper outputs.
+- Advanced techniques: **Chain-of-Thought (CoT)**, **Self-Consistency**, **Tree-of-Thoughts (ToT)**, **Retrieval-Augmented Generation (RAG)**, **Role Prompting**.
+- **Proptimizer** demo using **CloudFront**, **S3**, **Cognito**, **API Gateway**, and **Lambda**.
+
+### Key Takeaways
+
+- **Prompt engineering** is a core skill: treat prompts as specifications (role, task, context, format, examples, constraints).
+- Optimizing prompts reduces token costs and increases result stability and accuracy.
+- Techniques like **CoT/RAG/ToT** improve reasoning beyond single-shot answers.
+
+### Applying to Work
+
+- Use a standard prompt template for tasks (code, summary, analysis) to ensure reliable outputs.
+- Standardize prompt templates and logging in production to iteratively improve performance.
+- Consider **Proptimizer**-style tooling and **AWS** patterns when building prompt-optimization products.
+
+---
+
+## 3. AIoT Project: Locker Management (Aiden Dinh)
+
+### Event Objectives
+
+- Present a real **AIoT** project: an automated locker management system using sensors, **RFID**, and **AI**.
+- Share hardware + cloud architecture (**AWS**), data flow, costs, and a working demo.
+
+### Speaker
+
+- **Aiden Dinh** — Katalon Operation Engineer, "AI-Powered Projects – AIoT Project: Locker Management"
+
+![Aiden Dinh's speech](/images/3-EventParticipated/3.1-Event1/photo-3.jpg)
+
+### Key Highlights
+
+- Problem: automate locker borrowing to reduce manual manager dependency.
+- Architecture: **Arduino** (edge) + **Raspberry Pi** (controller, **MQTT**) + sensors (reed switch, **RFID**) + camera.
+- Cloud: **AWS IoT Core (MQTT)**, **S3** (images), **DynamoDB** (members/transactions), **Lambda** (**Rekognition**), **Amplify** (monitoring UI).
+- Flow: **RFID**/sensor events trigger photo capture → **Lambda** runs **Rekognition** → match against collection → record transaction in **DB**.
+
+### Key Takeaways
+
+- Combining sensing, connectivity, and **AI** solves physical asset-management problems effectively.
+- **Rekognition** + **RFID** enable auditable borrow/return logs (who, when, which item).
+- **AWS IoT Core** and serverless services allow scaling to multiple lockers and locations.
+
+### Applying to Work
+
+- Apply this design to lab equipment inventory, smart cabinets, or automated lending systems.
+- Use the project as an IoT/Cloud case study for coursework or portfolio.
+
+---
+
+## Summary
+
+Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
