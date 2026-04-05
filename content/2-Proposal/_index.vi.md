@@ -65,12 +65,27 @@ Hệ thống tận dụng sức mạnh của các dịch vụ Managed Services t
 - **Backend Services**: Lập trình bằng ngôn ngữ Golang. Mỗi container phải tuân thủ chuẩn Stateless để dễ điều phối.
 - **Bảo mật**: Các liên kết giữa service bên trong VPC không được xuất bản ra public internet mạng. RDS & ElastiCache phải thuộc Private Subnets.
 
-### 5. Lộ trình & Mốc triển khai  
-- **Tháng 1**: Khảo sát và thiết kế chi tiết Data Model, viết IaC để khởi tạo VPC, Database, và cấu trúc hạ tầng cơ bản.
-- **Tháng 2**: Build và Deploy Frontend tĩnh lên S3 + CloudFront. Phát triển các core backend services (Auth, Event, Ticket) trên ECS.
-- **Tháng 3**: Hoàn thiện các services phụ trợ (Venue, Staff), cấu hình SQS + SES gửi mail, tích hợp toàn bộ hệ thống qua API Gateway và chạy Load Test. Đưa vào triển khai thực tế.
+### 5. Chiến lược DevSecOps và Quy trình Kiểm thử Bảo mật
+Hệ thống áp dụng tư duy bảo mật từ sớm (Shift-Left Security), lồng ghép các khâu kiểm tra an toàn thông tin ngay từ bước viết mã cho đến khi triển khai lên đám mây. Đội ngũ dự án được phân tách rõ ràng thành 3 vai trò độc lập để đảm bảo tính khách quan: Lập trình viên (Dev), Quản trị Hạ tầng (DevOps), và Chuyên gia Kiểm thử Xâm nhập (Pentester).
 
-### 6. Ước tính ngân sách
+Quy trình DevSecOps được chia làm 3 giai đoạn (Phases) cốt lõi:
+
+* **Phase 1: Kiểm thử Ứng dụng Cục bộ:**
+    * Tiến hành rà quét mã nguồn và kiểm thử động (DAST) trên môi trường Docker nội bộ.
+    * Tập trung phát hiện các lỗ hổng logic nghiệp vụ, xác thực, và cấu hình mạng nội bộ theo tiêu chuẩn OWASP Top 10.
+* **Phase 1.5: Nghiệm thu và Vá lỗi (Remediation & Secure Coding):**
+    * Lập trình viên (Dev) tiếp nhận báo cáo bảo mật, tiến hành vá lỗi trực tiếp tại tầng mã nguồn.
+    * Áp dụng các tiêu chuẩn an toàn như thuật toán băm Bcrypt, bảo vệ JWT bằng HttpOnly Cookies, và cơ chế xác thực nội bộ (Internal Token) cho Microservices.
+* **Phase 2: Kiểm thử Hạ tầng Đám mây (Cloud Infrastructure Pentest):**
+    * Đánh giá bảo mật sau khi DevOps triển khai hệ thống lên AWS bằng Terraform (IaC).
+    * Tập trung kiểm toán bảo mật vành đai: Rà soát cấu hình mạng Amazon VPC, siết chặt tường lửa Security Group cho Amazon RDS, loại bỏ Bastion Host, và thiết lập Rate Limiting trên AWS WAF/CloudFront để phòng chống tấn công cạn kiệt tài chính (EDoS).
+
+### 6. Lộ trình & Mốc triển khai  
+- **Tháng 1**: Khảo sát và thiết kế chi tiết Data Model, viết IaC để khởi tạo VPC, Database, và cấu trúc hạ tầng cơ bản.
+- **Tháng 2**: Build và Deploy Frontend tĩnh lên S3 + CloudFront. Phát triển các core backend services (Auth, Event, Ticket) trên ECS. Thực hiện Phase 1 Pentest trên môi trường Local và Phase 1.5 Vá lỗi mã nguồn.
+- **Tháng 3**: Hoàn thiện các services phụ trợ (Venue, Staff), cấu hình SQS + SES gửi mail, tích hợp toàn bộ hệ thống qua API Gateway. Đưa vào triển khai thực tế. Thực hiện Phase 2 Pentest rà soát hạ tầng AWS (Cloud Security). Chạy Load Test và đưa vào triển khai thực tế.
+
+### 7. Ước tính ngân sách
 
 **Chi phí hạ tầng**
 - Compute (Amazon ECS với Fargate): 35,00 USD/tháng (6 microservices tối thiểu).
@@ -82,24 +97,28 @@ Hệ thống tận dụng sức mạnh của các dịch vụ Managed Services t
 
 **Tổng:** 109,00 USD/tháng, 1.308 USD/12 tháng
 
-### 7. Đánh giá rủi ro
+### 8. Đánh giá rủi ro
 **Ma trận rủi ro**
 
 - Dữ liệu mâu thuẫn giữa các microservices: Ảnh hưởng cao, xác suất trung bình.
 - Quá tải cục bộ luồng thanh toán: Ảnh hưởng cao, xác suất thấp.
 - Chi phí AWS vượt kiểm soát: Ảnh hưởng trung bình, xác suất thấp.
+- Rò rỉ thông tin nhạy cảm/mật khẩu trong mã nguồn hạ tầng (IaC): Ảnh hưởng rất cao, xác suất trung bình.
+- Tấn công cạn kiệt tài chính (EDoS) bằng lưu lượng ảo: Ảnh hưởng cao, xác suất trung bình.
 
 **Chiến lược giảm thiểu**
 
 - Dữ liệu: Sử dụng mô hình Saga Pattern hoặc Event-driven thông qua SQS.
 - Thanh toán: Áp dụng cơ chế queue bất đồng bộ và Auto-scaling tự động.
 - Chi phí: Cài đặt cảnh báo ngân sách AWS Budgets, thiết lập max-capacity.
+- Bảo mật cấu hình: Tuyệt đối không hardcode mật khẩu, tích hợp AWS Secrets Manager vào luồng CI/CD.
+- Phòng chống EDoS: Áp dụng ranh giới vi mô (Micro-segmentation) cho Security Groups và cấu hình Targeted Rate Limiting trên AWS WAF.
 
 **Kế hoạch dự phòng**
 
 - Quay về quy trình mua vé, check-in thủ công nếu hạ tầng gặp sự kiện down-time.
 - Sử dụng Terraform (IaC) để nhanh chóng khôi phục lại cấu hình môi trường.
 
-### 8. Kết quả kỳ vọng
+### 9. Kết quả kỳ vọng
 Cải tiến kỹ thuật: Tự động hóa hoàn toàn luồng phát hành vé và xử lý thanh toán, chịu tải tốt các đợt mở bán vé đồng thời lớn.
 Giá trị dài hạn: Nền tảng lõi vững chắc, dễ bảo trì, có thể tái sử dụng dưới dạng SaaS cho các sự kiện khác trong tương lai của FPT.
